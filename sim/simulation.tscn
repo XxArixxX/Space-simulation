@@ -1,0 +1,295 @@
+[gd_scene load_steps=34 format=3 uid="uid://dx38ur7yf520"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ujhka"]
+[ext_resource type="Texture2D" uid="uid://c2fc5w8ob4q2s" path="res://Sprites/25039-3840x2160-desktop-4k-milky-way-wallpaper-image.png" id="2_cqm12"]
+[ext_resource type="Texture2D" uid="uid://davlyfuivx14d" path="res://Sprites/8k_sun.jpg" id="3_4r2pn"]
+[ext_resource type="Texture2D" uid="uid://uwtd3ik4rk6c" path="res://Sprites/PIA17386.jpg" id="3_ipc3w"]
+[ext_resource type="Script" path="res://Label2.gd" id="4_6jpsx"]
+[ext_resource type="Script" path="res://planet1.gd" id="5_1ufqw"]
+[ext_resource type="Texture2D" uid="uid://bk5cj708fdmpe" path="res://Sprites/8k_earth_daymap.jpg" id="5_gusby"]
+[ext_resource type="Texture2D" uid="uid://b5he7wo7pbdh0" path="res://Sprites/Solarsystemscope_texture_4k_venus_atmosphere.jpg" id="5_ovwc0"]
+[ext_resource type="Texture2D" uid="uid://vm03h2saoj5r" path="res://Sprites/8k_mars.jpg" id="7_0c1vr"]
+[ext_resource type="Texture2D" uid="uid://buyjpdam183b0" path="res://Sprites/8k_jupiter.jpg" id="8_j3prt"]
+[ext_resource type="Texture2D" uid="uid://buwtctu3upifa" path="res://Sprites/8k_saturn.jpg" id="9_t1kx8"]
+[ext_resource type="Texture2D" uid="uid://oeb3fbhklsr6" path="res://Sprites/Solarsystemscope_texture_2k_uranus.jpg" id="10_8oqe0"]
+[ext_resource type="Texture2D" uid="uid://dmvye2ra5vp3h" path="res://Sprites/Solarsystemscope_texture_2k_neptune.jpg" id="11_a0r2o"]
+[ext_resource type="Texture2D" uid="uid://d1usjlfet4iy3" path="res://Sprites/dclugc9-14663f13-30c6-4fe3-8d1a-505571e67232.jpg" id="12_3j03b"]
+[ext_resource type="Script" path="res://Sun.gd" id="13_g2omi"]
+[ext_resource type="Texture2D" uid="uid://ds8lxak5cj4ii" path="res://Sprites/1657727530_2-celes-club-p-tekstura-saturna-krasivo-2.jpg" id="13_w1m30"]
+[ext_resource type="Script" path="res://TextEdit.gd" id="17_peh0d"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_pc2pc"]
+panorama = ExtResource("2_cqm12")
+
+[sub_resource type="Sky" id="Sky_1vdus"]
+sky_material = SubResource("PanoramaSkyMaterial_pc2pc")
+
+[sub_resource type="Environment" id="Environment_o6156"]
+background_mode = 2
+sky = SubResource("Sky_1vdus")
+ssao_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ep7i3"]
+albedo_texture = ExtResource("3_4r2pn")
+ao_on_uv2 = true
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qsdq3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6a35s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfwcq"]
+albedo_texture = ExtResource("3_ipc3w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yg6if"]
+albedo_texture = ExtResource("5_ovwc0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6k66c"]
+albedo_texture = ExtResource("5_gusby")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvdqi"]
+albedo_texture = ExtResource("7_0c1vr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyu8b"]
+albedo_texture = ExtResource("8_j3prt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mctlj"]
+albedo_texture = ExtResource("9_t1kx8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_052gj"]
+albedo_texture = ExtResource("13_w1m30")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rt7y"]
+albedo_texture = ExtResource("10_8oqe0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccq3r"]
+albedo_texture = ExtResource("11_a0r2o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2arw"]
+albedo_texture = ExtResource("12_3j03b")
+
+[node name="Solar System" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o6156")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 402.6)
+far = 10000.0
+script = ExtResource("1_ujhka")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D/CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.113
+offset_bottom = -0.224007
+color = Color(0, 0, 0, 0.607843)
+
+[node name="TextEdit" type="TextEdit" parent="Camera3D/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.015
+anchor_top = 0.035
+anchor_right = 0.115
+anchor_bottom = 0.097
+offset_left = -0.280001
+offset_top = 0.32
+offset_right = -0.479996
+offset_bottom = 0.143997
+placeholder_text = "1"
+script = ExtResource("17_peh0d")
+
+[node name="Label" type="Label" parent="Camera3D/CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.095
+anchor_bottom = 0.04
+offset_right = -69.44
+offset_bottom = -2.92
+text = "Time modifier
+"
+
+[node name="Button" type="Button" parent="Camera3D/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.121
+anchor_top = 0.035
+anchor_right = 0.193
+anchor_bottom = 0.091
+offset_left = -0.392014
+offset_top = 0.32
+offset_right = -0.335999
+offset_bottom = 0.0319977
+text = "Apply"
+
+[node name="Label2" type="Label" parent="Camera3D/CanvasLayer"]
+offset_left = 251.0
+offset_top = 18.0
+offset_right = 291.0
+offset_bottom = 41.0
+script = ExtResource("4_6jpsx")
+
+[node name="Celestial bodies" type="Node3D" parent="."]
+
+[node name="SunBody" type="RigidBody3D" parent="Celestial bodies"]
+mass = 484834.0
+script = ExtResource("13_g2omi")
+is_sun = true
+
+[node name="Sun" type="CSGSphere3D" parent="Celestial bodies/SunBody"]
+transform = Transform3D(696.34, 0, 0, 0, 696.34, 0, 0, 0, 696.34, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ep7i3")
+snap = 0.00121
+radial_segments = 100
+rings = 100
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Celestial bodies/SunBody"]
+visible = false
+light_energy = 2.0
+directional_shadow_max_distance = 100000.0
+sky_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Celestial bodies/SunBody"]
+transform = Transform3D(696.34, 0, 0, 0, 696.34, 0, 0, 0, 696.34, 0, 0, 0)
+shape = SubResource("SphereShape3D_qsdq3")
+disabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Celestial bodies/SunBody"]
+light_energy = 5.0
+omni_range = 10000.0
+omni_attenuation = 0.254912
+
+[node name="MercuryBody" type="RigidBody3D" parent="Celestial bodies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 754.34)
+mass = 500.76
+script = ExtResource("13_g2omi")
+initial_velocity = Vector3(5.3, 0, 0)
+
+[node name="Mercury" type="CSGSphere3D" parent="Celestial bodies/MercuryBody"]
+transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6a35s")
+material_overlay = SubResource("StandardMaterial3D_yfwcq")
+radial_segments = 100
+rings = 100
+script = ExtResource("5_1ufqw")
+
+[node name="VenusBody" type="RigidBody3D" parent="Celestial bodies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 804.34)
+mass = 3600.0
+script = ExtResource("13_g2omi")
+initial_velocity = Vector3(5.1, 0, 0)
+
+[node name="Venus" type="CSGSphere3D" parent="Celestial bodies/VenusBody"]
+transform = Transform3D(6.051, 0, 0, 0, 6.051, 0, 0, 0, 6.051, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_yg6if")
+radial_segments = 100
+rings = 100
+script = ExtResource("5_1ufqw")
+
+[node name="EarthBody" type="RigidBody3D" parent="Celestial bodies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 846.34)
+mass = 3900.0
+script = ExtResource("13_g2omi")
+initial_velocity = Vector3(5, 0, 0)
+
+[node name="Earth" type="CSGSphere3D" parent="Celestial bodies/EarthBody"]
+transform = Transform3D(6.3, 0, 0, 0, 6.3, 0, 0, 0, 6.3, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6k66c")
+radial_segments = 100
+rings = 100
+script = ExtResource("5_1ufqw")
+
+[node name="MarsBody" type="RigidBody3D" parent="Celestial bodies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 924.34)
+mass = 1148.0
+script = ExtResource("13_g2omi")
+initial_velocity = Vector3(4.9, 0, 0)
+
+[node name="Mars" type="CSGSphere3D" parent="Celestial bodies/MarsBody"]
+transform = Transform3D(3.389, 0, 0, 0, 3.389, 0, 0, 0, 3.389, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_dvdqi")
+radial_segments = 100
+rings = 100
+script = ExtResource("5_1ufqw")
+rotation_speed = 1.0
+
+[node name="JupiterBody" type="RigidBody3D" parent="Celestial bodies"]
+transform = Transform3D(-0.765124, 0, -0.643883, 0, 1, 0, 0.643883, 0, -0.765124, 0, 0, 1474.34)
+mass = 4887.41
+gravity_scale = 0.0
+script = ExtResource("13_g2omi")
+initial_velocity = Vector3(4, 0, 0)
+
+[node name="Jupiter" type="CSGSphere3D" parent="Celestial bodies/JupiterBody"]
+transform = Transform3D(69.911, 0, 0, 0, 69.911, 0, 0, 0, 69.911, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qyu8b")
+radial_segments = 100
+rings = 100
+script = ExtResource("5_1ufqw")
+rotation_speed = 1.0
+
+[node name="SaturnBody" type="RigidBody3D" parent="Celestial bodies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2125.34)
+mass = 3390.73
+script = ExtResource("13_g2omi")
+initial_velocity = Vector3(3.8, 0, 0)
+
+[node name="Saturn" type="CSGSphere3D" parent="Celestial bodies/SaturnBody"]
+transform = Transform3D(58.232, 0, 0, 0, 58.232, 0, 0, 0, 58.232, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_mctlj")
+radial_segments = 100
+rings = 100
+script = ExtResource("5_1ufqw")
+rotation_speed = 1.0
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Celestial bodies/SaturnBody/Saturn"]
+transform = Transform3D(3, 0, 0, 0, 0, 0, 0, 0, 2.125, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_052gj")
+sides = 64
+ring_sides = 64
+
+[node name="UranusBody" type="RigidBody3D" parent="Celestial bodies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3571.34)
+mass = 625.0
+script = ExtResource("13_g2omi")
+initial_velocity = Vector3(3.7, 0, 0)
+
+[node name="Uranus" type="CSGSphere3D" parent="Celestial bodies/UranusBody"]
+transform = Transform3D(25.632, 0, 0, 0, 25.632, 0, 0, 0, 25.632, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_5rt7y")
+radial_segments = 100
+rings = 100
+script = ExtResource("5_1ufqw")
+rotation_speed = 1.0
+
+[node name="NeptuneBody" type="RigidBody3D" parent="Celestial bodies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5193.34)
+mass = 6000.0
+script = ExtResource("13_g2omi")
+initial_velocity = Vector3(3.7, 0, 0)
+
+[node name="Neptune" type="CSGSphere3D" parent="Celestial bodies/NeptuneBody"]
+transform = Transform3D(24.622, 0, 0, 0, 24.622, 0, 0, 0, 24.622, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ccq3r")
+radial_segments = 100
+rings = 100
+script = ExtResource("5_1ufqw")
+rotation_speed = 1.0
+
+[node name="PlutoBody" type="RigidBody3D" parent="Celestial bodies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6609.34)
+mass = 121.0
+script = ExtResource("13_g2omi")
+initial_velocity = Vector3(4, 0, 0)
+
+[node name="Pluto" type="CSGSphere3D" parent="Celestial bodies/PlutoBody"]
+transform = Transform3D(1.188, 0, 0, 0, 1.188, 0, 0, 0, 1.188, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_r2arw")
+radial_segments = 100
+rings = 100
+script = ExtResource("5_1ufqw")
+rotation_speed = 1.0
+
+[connection signal="mouse_entered" from="Camera3D/CanvasLayer/TextEdit" to="Camera3D/CanvasLayer/TextEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Camera3D/CanvasLayer/TextEdit" to="Camera3D/CanvasLayer/TextEdit" method="_on_mouse_exited"]
+[connection signal="pressed" from="Camera3D/CanvasLayer/Button" to="Camera3D/CanvasLayer/TextEdit" method="_on_button_pressed"]
